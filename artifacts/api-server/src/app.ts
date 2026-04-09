@@ -51,6 +51,10 @@ app.use(
   })
 );
 
+app.get("/", (_req, res) => {
+  res.send("Smart Study API is running");
+});
+
 app.use("/api", router);
 
 export default app;
