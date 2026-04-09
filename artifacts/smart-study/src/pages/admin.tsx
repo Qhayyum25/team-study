@@ -1,5 +1,12 @@
 import { Layout } from "@/components/layout";
-import { useGetMe, useListGroups, useDeleteGroup, getListGroupsQueryKey } from "@workspace/api-client-react";
+import { 
+  useGetMe, 
+  useListGroups, 
+  useDeleteGroup, 
+  getListGroupsQueryKey,
+  ErrorResponse,
+  ErrorType
+} from "@workspace/api-client-react";
 import { useLocation } from "wouter";
 import { useEffect } from "react";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
@@ -34,10 +41,10 @@ export default function Admin() {
         toast({ title: "Group deleted" });
         queryClient.invalidateQueries({ queryKey: getListGroupsQueryKey() });
       },
-      onError: (error) => {
+      onError: (error: ErrorType<ErrorResponse>) => {
         toast({ 
           title: "Error deleting group", 
-          description: error.error?.error || "Unknown error",
+          description: error.data?.error || "Unknown error",
           variant: "destructive"
         });
       }

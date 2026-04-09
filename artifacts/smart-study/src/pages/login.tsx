@@ -3,7 +3,7 @@ import { Link, useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useLogin, useGetMe } from "@workspace/api-client-react";
+import { useLogin, useGetMe, ErrorResponse, ErrorType } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
@@ -42,10 +42,10 @@ export default function Login() {
         toast({ title: "Welcome back!" });
         setLocation("/");
       },
-      onError: (error) => {
+      onError: (error: ErrorType<ErrorResponse>) => {
         toast({ 
           title: "Login failed", 
-          description: error.error?.error || "Invalid credentials",
+          description: error.data?.error || "Invalid credentials",
           variant: "destructive" 
         });
       }

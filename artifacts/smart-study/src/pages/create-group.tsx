@@ -2,7 +2,7 @@ import { Layout } from "@/components/layout";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useCreateGroup, getListGroupsQueryKey } from "@workspace/api-client-react";
+import { useCreateGroup, getListGroupsQueryKey, ErrorResponse, ErrorType } from "@workspace/api-client-react";
 import { useLocation } from "wouter";
 import { useQueryClient } from "@tanstack/react-query";
 import { Button } from "@/components/ui/button";
@@ -46,10 +46,10 @@ export default function CreateGroup() {
         queryClient.invalidateQueries({ queryKey: getListGroupsQueryKey() });
         setLocation(`/groups/${newGroup.id}`);
       },
-      onError: (error) => {
+      onError: (error: ErrorType<ErrorResponse>) => {
         toast({ 
           title: "Failed to create group", 
-          description: error.error?.error || "Something went wrong",
+          description: error.data?.error || "Something went wrong",
           variant: "destructive" 
         });
       }

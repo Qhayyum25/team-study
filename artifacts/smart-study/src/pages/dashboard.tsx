@@ -59,7 +59,7 @@ export default function Dashboard() {
               <Card key={i} className="h-[200px] animate-pulse bg-muted/50 border-0" />
             ))}
           </div>
-        ) : !groups || groups.length === 0 ? (
+        ) : !Array.isArray(groups) || groups.length === 0 ? (
           <div className="text-center py-16 bg-white rounded-xl border border-dashed">
             <div className="bg-primary/5 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
               <Users className="w-8 h-8 text-primary" />

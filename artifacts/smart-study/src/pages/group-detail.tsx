@@ -5,7 +5,8 @@ import {
   useGetGroup, 
   useGetGroupMessages, 
   useSendMessage,
-  getGetGroupMessagesQueryKey 
+  getGetGroupMessagesQueryKey,
+  MessageWithUser
 } from "@workspace/api-client-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -25,7 +26,10 @@ export default function GroupDetail() {
 
   const { data: group, isLoading: groupLoading, error: groupError } = useGetGroup(id);
   const { data: messages, isLoading: messagesLoading } = useGetGroupMessages(id, {
-    query: { refetchInterval: 3000 }
+    query: { 
+      refetchInterval: 3000,
+      queryKey: getGetGroupMessagesQueryKey(id)
+    }
   });
   
   const sendMessage = useSendMessage();
@@ -151,9 +155,9 @@ export default function GroupDetail() {
                   <p className="text-sm">Say hi and start studying!</p>
                 </div>
               ) : (
-                messages.map((msg, i) => {
-                  const showHeader = i === 0 || messages[i-1].userId !== msg.userId || 
-                    new Date(msg.timestamp).getTime() - new Date(messages[i-1].timestamp).getTime() > 300000;
+                (messages as any[]).map((msg: any, i: number) => {
+                  const showHeader = i === 0 || messages![i-1].userId !== msg.userId || 
+                    new Date(msg.timestamp).getTime() - new Date(messages![i-1].timestamp).getTime() > 300000;
                   
                   return (
                     <div key={msg.id} className={`flex flex-col ${!showHeader ? 'mt-1' : 'mt-4'}`}>
