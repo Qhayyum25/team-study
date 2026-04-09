@@ -20,9 +20,10 @@ A full-stack web application for KITS college students to find, create, and join
 
 ## Users (Demo)
 
-- Rahul: rahul@kits.edu / 123 (student)
-- Priya: priya@kits.edu / 123 (student)
-- Admin: admin@kits.edu / admin (admin)
+- Rahul: rahul@kits.edu / 123 (student, pre-seeded)
+- Priya: priya@kits.edu / 123 (student, pre-seeded)
+- Admin: admin@kits.edu / admin (admin, fixed — cannot be overwritten via registration)
+- New users can self-register via /register (must use @kits.edu email)
 
 ## Features
 

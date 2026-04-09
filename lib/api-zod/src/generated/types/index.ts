@@ -17,5 +17,6 @@ export * from "./loginBody";
 export * from "./loginResponse";
 export * from "./messageResponse";
 export * from "./messageWithUser";
+export * from "./registerBody";
 export * from "./sendMessageBody";
 export * from "./user";

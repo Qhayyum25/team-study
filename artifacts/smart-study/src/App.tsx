@@ -7,6 +7,7 @@ import { useGetMe } from "@workspace/api-client-react";
 import { useEffect } from "react";
 
 import Login from "@/pages/login";
+import Register from "@/pages/register";
 import Dashboard from "@/pages/dashboard";
 import CreateGroup from "@/pages/create-group";
 import GroupDetail from "@/pages/group-detail";
@@ -53,6 +54,7 @@ function Router() {
   return (
     <Switch>
       <Route path="/login" component={Login} />
+      <Route path="/register" component={Register} />
       <Route path="/">
         {() => <ProtectedRoute><Dashboard /></ProtectedRoute>}
       </Route>

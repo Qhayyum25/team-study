@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "wouter";
+import { Link, useLocation } from "wouter";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -150,6 +150,13 @@ export default function Login() {
                 Admin
               </Button>
             </div>
+
+            <p className="text-center text-sm text-muted-foreground">
+              New student?{" "}
+              <Link href="/register" className="text-primary font-medium hover:underline">
+                Create an account
+              </Link>
+            </p>
           </CardContent>
         </Card>
       </div>
