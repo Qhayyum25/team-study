@@ -13,10 +13,8 @@ router.post("/auth/register", async (req, res) => {
   }
   const { name, email, password } = parsed.data;
 
-  if (!email.endsWith("@kits.edu")) {
-    res.status(400).json({ error: "Email must be a @kits.edu address" });
-    return;
-  }
+  // Removed @kits.edu restriction for easier testing
+
 
   if (name.trim().length < 2) {
     res.status(400).json({ error: "Name must be at least 2 characters" });

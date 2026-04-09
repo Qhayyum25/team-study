@@ -15,8 +15,7 @@ const registerSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters"),
   email: z
     .string()
-    .email("Enter a valid email address")
-    .endsWith("@kits.edu", "Email must be a @kits.edu address"),
+    .email("Enter a valid email address"),
   password: z.string().min(3, "Password must be at least 3 characters"),
 });
 
