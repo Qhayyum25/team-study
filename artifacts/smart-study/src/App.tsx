@@ -3,8 +3,14 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
-import { useGetMe } from "@workspace/api-client-react";
+import { useGetMe, setBaseUrl } from "@workspace/api-client-react";
 import { useEffect } from "react";
+
+// Configure API base URL for production
+if (import.meta.env.VITE_API_URL) {
+  setBaseUrl(import.meta.env.VITE_API_URL);
+}
+
 
 import Login from "@/pages/login";
 import Register from "@/pages/register";
