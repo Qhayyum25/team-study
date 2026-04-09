@@ -1,0 +1,164 @@
+Build a full-stack web application called "Smart Study Group Finder".
+
+Tech Stack:
+- Frontend: HTML, CSS, JavaScript (simple, clean UI)
+- Backend: Python Flask
+- Database: SQLite
+
+The application should look modern, clean, and slightly styled (not basic plain UI).
+
+-----------------------------------
+CORE FEATURES
+-----------------------------------
+
+1. USER AUTHENTICATION
+- Login system (no signup needed, just mock users)
+- Predefined users:
+  - Rahul (rahul@kits.edu, password: 123)
+  - Priya (priya@kits.edu, password: 123)
+
+- After login → redirect to dashboard
+
+-----------------------------------
+
+2. DASHBOARD (MAIN PAGE)
+- Show all study groups
+- Display:
+  - Group Name
+  - Subject (DBMS, OS, CN, etc.)
+  - Topic
+  - Exam Target
+  - Number of members
+  - "Join" button
+
+- Add filter dropdown:
+  - Filter by subject (DBMS, OS, CN, DSA, Maths)
+
+-----------------------------------
+
+3. CREATE GROUP
+- Form fields:
+  - Group Name
+  - Subject
+  - Topic
+  - Exam Target
+
+- On submit:
+  - Save to SQLite DB
+  - Add creator as first member
+
+-----------------------------------
+
+4. JOIN GROUP
+- Button: "Join"
+- When clicked:
+  - Add logged-in user to group members
+  - Prevent duplicate joining
+
+-----------------------------------
+
+5. VIEW GROUP MEMBERS
+- Click group → open details page
+- Show:
+  - Member names
+  - Email (contact info)
+  - Total members
+
+-----------------------------------
+
+6. SIMPLE CHAT (BASIC)
+- Inside group page:
+  - Input box
+  - Send message
+- Store messages in DB
+- Show messages in order
+
+-----------------------------------
+
+7. ADMIN (SIMPLE)
+- Add one admin user:
+  - admin@kits.edu / password: admin
+
+Admin dashboard:
+- View all groups
+- Delete group
+
+-----------------------------------
+
+DATABASE TABLES
+
+Users:
+- id
+- name
+- email
+- password
+- role (student/admin)
+
+Groups:
+- id
+- name
+- subject
+- topic
+- exam_target
+
+Members:
+- id
+- user_id
+- group_id
+
+Messages:
+- id
+- group_id
+- user_id
+- message
+- timestamp
+
+-----------------------------------
+
+UI REQUIREMENTS
+
+- Use cards for groups
+- Use navbar:
+  - Dashboard
+  - Create Group
+  - Logout
+
+- Make it clean:
+  - Soft colors
+  - Rounded buttons
+  - Good spacing
+
+-----------------------------------
+
+EXTRA (IMPORTANT FOR DEMO)
+
+Preload database with:
+- One group:
+  - "DBMS Exam Prep"
+  - Subject: DBMS
+  - Topic: Normalization + SQL
+  - Exam: End Sem
+
+-----------------------------------
+
+FLOW (MUST MATCH PPT)
+
+1. Login as Rahul
+2. Create group "DBMS Exam Prep"
+3. Login as Priya
+4. Join the group
+5. View members
+6. Send a message
+
+-----------------------------------
+
+OUTPUT
+
+- Provide full working code
+- Separate files:
+  - app.py
+  - templates (HTML)
+  - static (CSS)
+
+- Include instructions:
+  - How to run
